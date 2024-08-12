@@ -1,0 +1,29 @@
+{
+  "name": "cryptographic-algos",
+  "version": "1.0.0",
+  "description": "Common and not so common algorythms for generating strong ans secure passwords. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jmartinpizarro/cryptographic-algos.git"
+  },
+  "keywords": [
+    "cryptography",
+    "algorythms"
+  ],
+  "author": "jmartinpizarro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmartinpizarro/cryptographic-algos/issues"
+  },
+  "homepage": "https://github.com/jmartinpizarro/cryptographic-algos#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0"
+  }
+}
