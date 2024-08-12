@@ -18,17 +18,26 @@ function caesarCipher(message, alphabet, n_rotation) {
     if (n_rotation <= 0) {
         throw new Error('caesarCipher() Error: The n_rotation parameter must be bigger than 0')
     }
-    const result = [];
+    const cipheredAlphabet = [];
     let counter = 0;
     let cipheredMessage = '';
     while (counter < alphabet.length - n_rotation) {    // while we have positions to append
-        result.push(alphabet[counter + n_rotation]);
+        cipheredAlphabet.push(alphabet[counter + n_rotation]);
         counter++;
     }
 
     for (let i = 0; i < n_rotation; i++){   // for the remaining positions, we start again from the beggining
-        result.push(alphabet[i]);
+        cipheredAlphabet.push(alphabet[i]);
     }
 
-    return { result, cipheredMessage }     // returns the ciphered message and the rotated alphabet
+    const nomenclator = {}  // object that Object[chracter from init alphabet] -> character from ciphered alphabet
+    for (let i = 0; i < cipheredAlphabet.length; i++){
+        nomenclator[alphabet[i]] = cipheredAlphabet[i]
+    }
+
+    for (index in message) {
+        cipheredMessage += nomenclator[message[index]]
+    }
+
+    return { cipheredAlphabet, cipheredMessage }     // returns the ciphered message and the rotated alphabet
 };
