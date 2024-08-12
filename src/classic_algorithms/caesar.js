@@ -13,10 +13,13 @@ const alphabet = [...'abcdefghijklmnopqrstuvwxyz'];
 
 function caesarCipher(message, alphabet, n_rotation) {
     if (alphabet.length === 0) {
-        throw new Error('caesarCipher() Error: The length of the alphabet parameter cannot be empty')
+        throw new RangeError('caesarCipher() Error: The length of the alphabet parameter cannot be empty')
     }
-    if (n_rotation <= 0) {
-        throw new Error('caesarCipher() Error: The n_rotation parameter must be bigger than 0')
+    if (message.length === 0) {
+        throw new RangeError('caesarCipher() Error: The length of the message parameter cannot be 0')
+    }
+    if (n_rotation <= 0 || n_rotation >= alphabet.length) {
+        throw new RangeError('caesarCipher() Error: The n_rotation parameter must be bigger than 0 and smaller than the length of the alphabet')
     }
     const cipheredAlphabet = [];
     let counter = 0;
@@ -44,9 +47,8 @@ function caesarCipher(message, alphabet, n_rotation) {
         throw new Error('caesarCipher() Internal Error: Something wrong has happened when ciphering the message: length of both, ciphered and original message is not the same')
     }
 
-    return { cipheredAlphabet, cipheredMessage }     // returns the ciphered message and the rotated alphabet
+    return { cipheredAlphabet, cipheredMessage }    // returns the ciphered message and the rotated alphabet
 };
 
 
-const output = caesarCipher('abcd e', alphabet, 2)
-console.log(output)
+module.exports = caesarCipher;
