@@ -38,12 +38,12 @@ function caesarCipher(message, alphabet, n_rotation) {
         nomenclator[alphabet[i]] = cipheredAlphabet[i]
     }
 
-    const messageToCipher = message.trim().replace(' ', '').trim();
+    const messageToCipher = message.trim().replaceAll(' ', '').trim();
     for (index in messageToCipher) {
         cipheredMessage += nomenclator[messageToCipher[index]]
     }
 
-    if (cipheredMessage.length != message.trim().replace(' ', '').length) {
+    if (cipheredMessage.length != message.trim().replaceAll(' ', '').length) {
         throw new Error('caesarCipher() Internal Error: Something wrong has happened when ciphering the message: length of both, ciphered and original message is not the same')
     }
 
