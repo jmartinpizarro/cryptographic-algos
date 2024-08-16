@@ -11,6 +11,9 @@ function transpositionCipher(message, model = 'zigzag', keyWord = '') {
     if (message.length == 0) {
         throw new RangeError('tranpositionCipher() Error: Message to cipher must have a length of, at least, 1 character')
     }
+    if (typeof message !== string || typeof model !== string) {
+        throw new TypeError('tranpositionCipher() Error: Parameters "model" and "message" must be a string')
+    }
     const messageToCipher = message.trim().replaceAll(' ', '')
     let cipherMessage = ''
     switch (model) {
@@ -66,10 +69,8 @@ function transpositionCipher(message, model = 'zigzag', keyWord = '') {
             }
             return cipherMessage
         default:
-            throw new TypeError('tranpositionCipher() Error: "model" can be either "single-columnar" or "zigzag"')
+            throw new SyntaxError('tranpositionCipher() Error: "model" can be either "single-columnar" or "zigzag"')
     }
-
-
 }
 
 module.exports = transpositionCipher
